@@ -37,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         wordLocations = {};
         wordListElement.innerHTML = '';
         gridElement.innerHTML = '';
-        gridElement.style.gridTemplateColumns = `repeat(${gridSize}, 35px)`;
-        gridElement.style.gridTemplateRows = `repeat(${gridSize}, 35px)`;
         foundWords = [];
         
         currentWords.forEach(word => {

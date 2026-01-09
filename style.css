@@ -32,8 +32,9 @@ header h1 {
 
 #word-search-grid {
     display: grid;
-    grid-template-columns: repeat(10, 40px);
-    grid-template-rows: repeat(10, 40px);
+    /* Updated for 12x12 grid and larger cells */
+    grid-template-columns: repeat(12, 45px);
+    grid-template-rows: repeat(12, 45px);
     gap: 2px;
     border: 2px solid #4CAF50;
     padding: 5px;
@@ -41,12 +42,13 @@ header h1 {
 }
 
 .grid-cell {
-    width: 40px;
-    height: 40px;
+    /* Updated for larger size and font */
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
     background-color: #FFFFFF;
@@ -103,20 +105,22 @@ button:hover {
     background-color: #45a049;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) { /* Adjusted breakpoint for larger grid */
     #game-container {
         flex-direction: column;
         align-items: center;
     }
 
     #word-search-grid {
-        grid-template-columns: repeat(10, 30px);
-        grid-template-rows: repeat(10, 30px);
+        /* Updated for 12x12 grid and larger mobile cells */
+        grid-template-columns: repeat(12, 35px);
+        grid-template-rows: repeat(12, 35px);
     }
 
     .grid-cell {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
+        /* Updated for larger mobile size and font */
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
     }
 }
