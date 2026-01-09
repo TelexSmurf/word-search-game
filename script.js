@@ -9,7 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
         { category: 'Maträtter', words: ['köttbullar', 'pannkakor', 'smörgåstårta', 'pyttipanna', 'surströmming', 'ärtsoppa'] },
         { category: 'I Hemmet', words: ['soffa', 'bord', 'stol', 'säng', 'lampa', 'fönster', 'dörr', 'spegel'] },
         { category: 'Yrken', words: ['läkare', 'lärare', 'polis', 'brandman', 'kock', 'ingenjör', 'snickare'] },
-        { category: 'Svårare Ord', words: ['programmering', 'bibliotek', 'miljöförstöring', 'konstitution', 'extraordinär', 'vetenskap'] }
+        { category: 'Svårare Ord', words: ['programmering', 'bibliotek', 'miljöförstöring', 'konstitution', 'extraordinär', 'vetenskap'] },
+        { category: 'Transportmedel', words: ['bil', 'buss', 'tåg', 'flygplan', 'cykel', 'båt', 'motorcykel'] },
+        { category: 'Husdjur', words: ['hamster', 'kanin', 'marsvin', 'papegoja', 'sköldpadda', 'orm'] },
+        { category: 'Väder', words: ['regn', 'snö', 'solsken', 'moln', 'vind', 'åska', 'blixt'] },
+        { category: 'Musik', words: ['gitarr', 'piano', 'trummor', 'sång', 'melodi', 'orkester', 'konsert'] },
+        { category: 'Sport', words: ['fotboll', 'hockey', 'tennis', 'golf', 'simning', 'löpning', 'basket'] },
+        { category: 'Kök', words: ['kniv', 'gaffel', 'sked', 'tallrik', 'glas', 'kastrull', 'stekpanna'] },
+        { category: 'Skola', words: ['bok', 'penna', 'lärare', 'elev', 'klassrum', 'räkna', 'skriva'] },
+        { category: 'Jobb', words: ['kontor', 'möte', 'dator', 'kollega', 'chef', 'projekt', 'deadline'] },
+        { category: 'Länder', words: ['sverige', 'norge', 'danmark', 'finland', 'island', 'tyskland', 'frankrike'] },
+        { category: 'Känslor', words: ['glad', 'ledsen', 'arg', 'rädd', 'lugn', 'förvånad', 'kärlek'] }
     ];
 
     let currentWords = [];
