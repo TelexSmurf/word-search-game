@@ -1,2 +1,10 @@
-# Ignore the original image file
+# Ignore asset directories
+fatcow-icons/
+Yummy/
+
+# Ignore original image file
 WordSearch.jpg
+
+# Ignore system files
+.DS_Store
+Thumbs.db

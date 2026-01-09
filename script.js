@@ -4,7 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
         { category: 'Frukt', words: ['äpple', 'banan', 'apelsin', 'päron', 'druva', 'citron', 'mango'] },
         { category: 'Färger', words: ['röd', 'grön', 'blå', 'gul', 'svart', 'vit', 'lila', 'orange'] },
         { category: 'Kroppen', words: ['huvud', 'arm', 'ben', 'fot', 'hand', 'öga', 'näsa', 'mun'] },
-        { category: 'Natur', words: ['sol', 'måne', 'stjärna', 'träd', 'blomma', 'flod', 'berg'] }
+        { category: 'Natur', words: ['sol', 'måne', 'stjärna', 'träd', 'blomma', 'flod', 'berg'] },
+        { category: 'Svenska Städer', words: ['stockholm', 'göteborg', 'malmö', 'uppsala', 'linköping', 'örebro', 'västerås'] },
+        { category: 'Maträtter', words: ['köttbullar', 'pannkakor', 'smörgåstårta', 'pyttipanna', 'surströmming', 'ärtsoppa'] },
+        { category: 'I Hemmet', words: ['soffa', 'bord', 'stol', 'säng', 'lampa', 'fönster', 'dörr', 'spegel'] },
+        { category: 'Yrken', words: ['läkare', 'lärare', 'polis', 'brandman', 'kock', 'ingenjör', 'snickare'] },
+        { category: 'Svårare Ord', words: ['programmering', 'bibliotek', 'miljöförstöring', 'konstitution', 'extraordinär', 'vetenskap'] }
     ];
 
     let currentWords = [];
@@ -122,25 +127,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isSelecting = false;
 
-    gridElement.addEventListener('mousedown', e => {
-        if (e.target.classList.contains('grid-cell')) {
-            isSelecting = true;
-            selectedCells = [e.target];
-            e.target.classList.add('selected');
+    function handleCellSelection(cell) {
+        if (cell && cell.classList.contains('grid-cell') && !selectedCells.includes(cell)) {
+            selectedCells.push(cell);
+            cell.classList.add('selected');
         }
-    });
+    }
 
-    gridElement.addEventListener('mouseover', e => {
-        if (isSelecting && e.target.classList.contains('grid-cell')) {
-            const currentCell = e.target;
-            if (!selectedCells.includes(currentCell)) {
-                selectedCells.push(currentCell);
-                currentCell.classList.add('selected');
+    function selectionStart(event) {
+        isSelecting = true;
+        selectedCells = [];
+        handleCellSelection(event.target);
+    }
+
+    function selectionMove(event) {
+        if (isSelecting) {
+            let target;
+            if (event.touches) {
+                const touch = event.touches[0];
+                target = document.elementFromPoint(touch.clientX, touch.clientY);
+            } else {
+                target = event.target;
             }
+            handleCellSelection(target);
         }
-    });
+    }
 
-    gridElement.addEventListener('mouseup', () => {
+    function selectionEnd() {
         if (isSelecting) {
             isSelecting = false;
             checkSelection();
@@ -149,6 +162,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectedCells = [];
             }, 500);
         }
+    }
+
+    // Mouse Events
+    gridElement.addEventListener('mousedown', selectionStart);
+    gridElement.addEventListener('mouseover', selectionMove);
+    gridElement.addEventListener('mouseup', selectionEnd);
+    gridElement.addEventListener('mouseleave', selectionEnd); // End selection if mouse leaves grid
+
+    // Touch Events
+    gridElement.addEventListener('touchstart', e => {
+        e.preventDefault(); // Prevent scrolling while selecting
+        selectionStart(e);
+    });
+    gridElement.addEventListener('touchmove', e => {
+        e.preventDefault();
+        selectionMove(e);
+    });
+    gridElement.addEventListener('touchend', e => {
+        e.preventDefault();
+        selectionEnd();
     });
     
     function checkSelection() {
