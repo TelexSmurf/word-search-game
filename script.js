@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function placeWords() {
-        const directions = ['horizontal', 'vertical', 'diagonal'];
+        const directions = ['horizontal', 'vertical'];
         currentWords.forEach(word => {
             let placed = false;
             let attempts = 0;
